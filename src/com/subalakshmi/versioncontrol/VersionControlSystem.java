@@ -9,8 +9,7 @@ public class VersionControlSystem {
 
     public void commit(String content) {
         int newVersionId = versions.size() + 1;
-        String timestamp = java.time.LocalDateTime.now().toString();
-        versions.add(new Version(newVersionId, content, timestamp));
+        versions.add(new Version(newVersionId, content));
     }
 
     public void showHistory() {
@@ -22,4 +21,5 @@ public class VersionControlSystem {
         }
     }
 }
+
 

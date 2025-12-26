@@ -9,6 +9,8 @@ public class Main {
         vcs.commit("Added login feature");
         vcs.commit("Fixed bugs");
 
+        System.out.println("Version History:");
         vcs.showHistory();
     }
 }
+
