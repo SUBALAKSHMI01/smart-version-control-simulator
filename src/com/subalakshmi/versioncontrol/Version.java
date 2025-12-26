@@ -8,10 +8,10 @@ public class Version {
     private String content;
     private LocalDateTime timestamp;
 
-    public Version(int versionId, String content) {
+    public Version(int versionId, String content, LocalDateTime timestamp) {
         this.versionId = versionId;
         this.content = content;
-        this.timestamp = LocalDateTime.now();
+        this.timestamp = timestamp;
     }
 
     public int getVersionId() {
@@ -29,7 +29,7 @@ public class Version {
     @Override
     public String toString() {
         return "Version{" +
-                "versionId=" + versionId +
+                "id=" + versionId +
                 ", content='" + content + '\'' +
                 ", timestamp=" + timestamp +
                 '}';

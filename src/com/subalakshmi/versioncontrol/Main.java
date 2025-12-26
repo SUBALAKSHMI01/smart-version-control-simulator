@@ -1,16 +1,17 @@
 package com.subalakshmi.versioncontrol;
 
 public class Main {
+
     public static void main(String[] args) {
 
         VersionControlSystem vcs = new VersionControlSystem();
 
-        vcs.commit("Initial version");
-        vcs.commit("Added login feature");
-        vcs.commit("Fixed bugs");
+        vcs.createVersion("Initial version");
+        vcs.createVersion("Added login feature");
+        vcs.createVersion("Fixed bugs");
 
-        System.out.println("Version History:");
         vcs.showHistory();
     }
 }
+
 

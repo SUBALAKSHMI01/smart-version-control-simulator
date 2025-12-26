@@ -1,25 +1,32 @@
 package com.subalakshmi.versioncontrol;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class VersionControlSystem {
 
-    private List<Version> versions = new ArrayList<>();
+    private List<Version> versionList = new ArrayList<>();
+    private Map<Integer, Version> versionMap = new HashMap<>();
+    private Stack<Version> versionStack = new Stack<>();
 
-    public void commit(String content) {
-        int newVersionId = versions.size() + 1;
-        versions.add(new Version(newVersionId, content));
+    public void createVersion(String content) {
+        int newVersionId = versionList.size() + 1;
+
+        Version version = new Version(
+                newVersionId,
+                content,
+                LocalDateTime.now()
+        );
+
+        versionList.add(version);
+        versionMap.put(newVersionId, version);
+        versionStack.push(version);
     }
 
     public void showHistory() {
-        for (Version v : versions) {
-            System.out.println(
-                    "Version " + v.getVersionId() +
-                            " | " + v.getTimestamp()
-            );
+        System.out.println("Version History:");
+        for (Version v : versionList) {
+            System.out.println(v);
         }
     }
 }
-
-
