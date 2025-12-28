@@ -1,17 +1,21 @@
 package com.subalakshmi.versioncontrol;
 
 public class Main {
-
     public static void main(String[] args) {
 
         VersionControlSystem vcs = new VersionControlSystem();
 
-        vcs.createVersion("Initial version");
-        vcs.createVersion("Added login feature");
-        vcs.createVersion("Fixed bugs");
+        vcs.createVersion("Initial code");
+        vcs.createVersion("Added login");
+        vcs.createVersion("Bug fix");
 
-        vcs.showHistory();
+        vcs.showCurrentVersion();
+
+        vcs.undoLastVersion();
+        vcs.showCurrentVersion();
+
+        vcs.undoLastVersion();
+        vcs.undoLastVersion();
+        vcs.undoLastVersion(); // edge case
     }
 }
-
-

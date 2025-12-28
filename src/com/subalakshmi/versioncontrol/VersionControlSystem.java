@@ -1,32 +1,50 @@
 package com.subalakshmi.versioncontrol;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 public class VersionControlSystem {
 
-    private List<Version> versionList = new ArrayList<>();
-    private Map<Integer, Version> versionMap = new HashMap<>();
-    private Stack<Version> versionStack = new Stack<>();
+    private List<Version> versions = new ArrayList<>();
+    private Stack<Version> undoStack = new Stack<>();
+    private Version currentVersion;
 
     public void createVersion(String content) {
-        int newVersionId = versionList.size() + 1;
+        int newVersionId = versions.size() + 1;
+        Version v = new Version(newVersionId, content, LocalDateTime.now());
 
-        Version version = new Version(
-                newVersionId,
-                content,
-                LocalDateTime.now()
-        );
+        versions.add(v);
+        undoStack.push(v);
+        currentVersion = v;
 
-        versionList.add(version);
-        versionMap.put(newVersionId, version);
-        versionStack.push(version);
+        System.out.println("Created: " + v);
     }
 
-    public void showHistory() {
-        System.out.println("Version History:");
-        for (Version v : versionList) {
-            System.out.println(v);
+    public void undoLastVersion() {
+        if (undoStack.isEmpty()) {
+            System.out.println("Nothing to undo!");
+            return;
+        }
+
+        Version removed = undoStack.pop();
+        versions.remove(removed);
+
+        if (!undoStack.isEmpty()) {
+            currentVersion = undoStack.peek();
+            System.out.println("Undo successful. Current: " + currentVersion);
+        } else {
+            currentVersion = null;
+            System.out.println("All versions removed.");
+        }
+    }
+
+    public void showCurrentVersion() {
+        if (currentVersion == null) {
+            System.out.println("No current version.");
+        } else {
+            System.out.println("Current Version: " + currentVersion);
         }
     }
 }
