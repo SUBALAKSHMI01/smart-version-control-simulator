@@ -5,17 +5,15 @@ public class Main {
 
         VersionControlSystem vcs = new VersionControlSystem();
 
-        vcs.createVersion("Initial code");
-        vcs.createVersion("Added login");
-        vcs.createVersion("Bug fix");
+        vcs.commit("Initial commit");
+        vcs.commit("Added login feature");
+        vcs.commit("Bug fixes");
 
-        vcs.showCurrentVersion();
+        System.out.println("Version History:");
+        vcs.showHistory();
 
-        vcs.undoLastVersion();
-        vcs.showCurrentVersion();
-
-        vcs.undoLastVersion();
-        vcs.undoLastVersion();
-        vcs.undoLastVersion(); // edge case
+        System.out.println("\nRetrieve Version by ID:");
+        Version v = vcs.getVersionById(2);
+        System.out.println(v);
     }
 }
