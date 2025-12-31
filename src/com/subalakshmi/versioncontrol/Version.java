@@ -3,14 +3,16 @@ package com.subalakshmi.versioncontrol;
 import java.time.LocalDateTime;
 
 public class Version {
+
     private int versionId;
     private String content;
     private LocalDateTime timestamp;
 
+    // Constructor (timestamp handled internally)
     public Version(int versionId, String content) {
         this.versionId = versionId;
         this.content = content;
-        this.timestamp = LocalDateTime.now(); // 👈 created internally
+        this.timestamp = LocalDateTime.now();
     }
 
     public int getVersionId() {
@@ -27,6 +29,6 @@ public class Version {
 
     @Override
     public String toString() {
-        return "Version " + versionId + " | " + timestamp;
+        return "Version " + versionId + " | " + timestamp + " | " + content;
     }
 }
