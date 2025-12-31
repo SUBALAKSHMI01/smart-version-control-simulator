@@ -46,8 +46,21 @@ public class VersionControlSystem {
 
     // DAY 5: Retrieve version by ID (HashMap → O(1))
     public Version getVersionById(int id) {
-        return versionMap.get(id);
+        if (id <= 0) {
+            System.out.println("Invalid version ID. ID must be positive.");
+            return null;
+        }
+
+        Version version = versionMap.get(id);
+
+        if (version == null) {
+            System.out.println("Version not found.");
+        }
+
+        return version;
     }
+
+
 
     // DAY 6: Show version history (Ordered)
     public void showVersionHistory() {

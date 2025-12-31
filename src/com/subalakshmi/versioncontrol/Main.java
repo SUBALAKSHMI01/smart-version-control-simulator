@@ -37,14 +37,14 @@ public class Main {
                 case 3:
                     System.out.print("Enter version ID: ");
                     int id = scanner.nextInt();
-                    Version version = vcs.getVersionById(id);
 
+                    Version version = vcs.getVersionById(id);
                     if (version != null) {
                         System.out.println(version);
-                    } else {
-                        System.out.println("Version not found.");
                     }
                     break;
+
+
 
                 case 4:
                     vcs.showVersionHistory();
