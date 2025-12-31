@@ -1,7 +1,7 @@
 package com.subalakshmi.versioncontrol;
 
 import java.util.Scanner;
-
+// Menu-driven program to interact with the Version Control System
 public class Main {
 
     public static void main(String[] args) {

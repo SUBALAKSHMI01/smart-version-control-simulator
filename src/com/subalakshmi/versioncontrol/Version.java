@@ -2,13 +2,14 @@ package com.subalakshmi.versioncontrol;
 
 import java.time.LocalDateTime;
 
+// Represents a single version (commit) in the system
 public class Version {
 
     private int versionId;
     private String content;
     private LocalDateTime timestamp;
 
-    // Constructor (timestamp handled internally)
+    // Constructor: timestamp is generated automatically
     public Version(int versionId, String content) {
         this.versionId = versionId;
         this.content = content;
@@ -29,6 +30,9 @@ public class Version {
 
     @Override
     public String toString() {
-        return "Version " + versionId + " | " + timestamp + " | " + content;
+        return "Version ID: " + versionId +
+                " | Time: " + timestamp +
+                " | Content: " + content;
     }
 }
+

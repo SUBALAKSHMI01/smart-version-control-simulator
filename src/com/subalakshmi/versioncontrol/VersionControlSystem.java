@@ -8,19 +8,19 @@ import java.util.Stack;
 
 public class VersionControlSystem {
 
-    // Data Structures
+
     private List<Version> versionList;
     private Stack<Version> versionStack;
     private Map<Integer, Version> versionMap;
 
-    // Constructor
+
     public VersionControlSystem() {
         versionList = new ArrayList<>();
         versionStack = new Stack<>();
         versionMap = new HashMap<>();
     }
 
-    // DAY 3: Commit a new version
+    //  Commit a new version
     public void commit(String content) {
         int newVersionId = versionList.size() + 1;
         Version version = new Version(newVersionId, content);
@@ -30,7 +30,7 @@ public class VersionControlSystem {
         versionMap.put(newVersionId, version);
     }
 
-    // DAY 4: Undo last version (Stack)
+    // Undo last version (Stack)
     public void undoLastVersion() {
         if (versionStack.isEmpty()) {
             System.out.println("No versions to undo.");
@@ -44,7 +44,7 @@ public class VersionControlSystem {
         System.out.println("Undo successful: Version " + lastVersion.getVersionId());
     }
 
-    // DAY 5: Retrieve version by ID (HashMap → O(1))
+    //  Retrieve version by ID (HashMap → O(1))
     public Version getVersionById(int id) {
         if (id <= 0) {
             System.out.println("Invalid version ID. ID must be positive.");
@@ -62,7 +62,7 @@ public class VersionControlSystem {
 
 
 
-    // DAY 6: Show version history (Ordered)
+    //  Show version history (Ordered)
     public void showVersionHistory() {
         if (versionList.isEmpty()) {
             System.out.println("No versions available.");
